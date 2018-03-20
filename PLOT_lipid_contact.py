@@ -64,7 +64,7 @@ for k, j in enumerate(lines):
         if os.path.isfile('%s_occ.xvg' % j):
 		filename = '%s_occ.xvg' % j
 		line_number = 2
-        	with open(filename) as f:
+		with open(filename) as f:
                 	lipid = f.read().splitlines()[1] 
 		colors = [ 'blue', 'red', 'green', 'orange', 'teal', 'purple' ]
         	if lipid not in lipid_color:
@@ -72,15 +72,16 @@ for k, j in enumerate(lines):
                 	lipid_color[lipid] = colors[position]
         	PlotLipidContact(j)
 
-### legend stuff still not working
-
 patchList = []
 
 for key in lipid_color:
 	data_key = mpatches.Patch(color=lipid_color[key], label=key) #, loc='center left', bbox_to_anchor=(1, 0.5)) 
 	patchList.append(data_key)
-leg = plt.legend(handles=patchList, bbox_to_anchor=(1.04,0.5), loc='center left')
+
+print patchList
+
+leg = plt.legend(handles=patchList,  bbox_to_anchor=(1, 0.5), loc='center left') ##)#, bbox_to_anchor=(1.04,0.5), loc='center left')
 leg.get_frame().set_edgecolor('k')
 leg.get_frame().set_linewidth(2)
-plt.tight_layout()
-plt.savefig('all_legend.png') 
+#plt.tight_layout()
+plt.savefig('test_legend.png', bbox_extra_artists=(leg,), bbox_inches='tight') 
