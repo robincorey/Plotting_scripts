@@ -24,11 +24,11 @@ def loaddata ( str ):
 	return
 
 filename = sys.argv[1]
-xlabel = "time ($\mu$s)"
-ylabel = "RMSD (nm)"
+xlabel = "time (#)"
+ylabel = "sasa (nm/S2/N)"
 f = open('data','w')
 sed = subprocess.call(['sed', '/#/d', filename], stdout=f)
-xdata, ydata = np.loadtxt(fname='data', comments='@', usecols=(0,1), unpack=True)
+xdata, ydata, ydata2, ydata3, ydata4 = np.loadtxt(fname='data', comments='@', usecols=(0,1,2,3,4), unpack=True)
 
 params = {'legend.fontsize': 'large',
 	'axes.labelsize': 'x-large',
@@ -43,10 +43,13 @@ plt.rcParams['ytick.major.width'] = 2
 plt.rcParams['font.sans-serif'] = "cmss10"
 plt.rcParams['axes.unicode_minus']=False
 
-plt.ylim([0,0.65])
-plt.plot(xdata, ydata, color='gray', marker='.', markersize=0)
-smooth = sc.signal.savgol_filter(ydata, 11, 1, deriv=0, delta=1, axis=-1, mode='interp', cval=0.0)
-plt.plot(xdata, smooth, 'red', linewidth=0.5)
+plt.ylim([10,20])
+plt.plot(xdata, ydata, color='red', marker='.', markersize=1)
+plt.plot(xdata, ydata2, color='orange', marker='.', markersize=1)
+plt.plot(xdata, ydata3, color='blue', marker='.', markersize=1)
+plt.plot(xdata, ydata4, color='cyan', marker='.', markersize=1)
+#smooth = sc.signal.savgol_filter(ydata, 11, 1, deriv=0, delta=1, axis=-1, mode='interp', cval=0.0)
+#plt.plot(xdata, smooth, 'red', linewidth=0.5)
 strip1 = filename.rstrip('.xvg')
 sysname = strip1.replace('_',' ')
 plt.title('%s' % sysname )

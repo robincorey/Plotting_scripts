@@ -24,11 +24,11 @@ def loaddata ( str ):
 	return
 
 filename = sys.argv[1]
-xlabel = "time ($\mu$s)"
-ylabel = "RMSD (nm)"
+xlabel = "bins"
+ylabel = "pop"
 f = open('data','w')
 sed = subprocess.call(['sed', '/#/d', filename], stdout=f)
-xdata, ydata = np.loadtxt(fname='data', comments='@', usecols=(0,1), unpack=True)
+ydata = np.loadtxt(fname='data', comments='@', usecols=(1), unpack=True)
 
 params = {'legend.fontsize': 'large',
 	'axes.labelsize': 'x-large',
@@ -43,10 +43,8 @@ plt.rcParams['ytick.major.width'] = 2
 plt.rcParams['font.sans-serif'] = "cmss10"
 plt.rcParams['axes.unicode_minus']=False
 
-plt.ylim([0,0.65])
-plt.plot(xdata, ydata, color='gray', marker='.', markersize=0)
-smooth = sc.signal.savgol_filter(ydata, 11, 1, deriv=0, delta=1, axis=-1, mode='interp', cval=0.0)
-plt.plot(xdata, smooth, 'red', linewidth=0.5)
+#plt.xlim([0,50])
+plt.hist(ydata, color='gray') # marker='.', markersize=0)
 strip1 = filename.rstrip('.xvg')
 sysname = strip1.replace('_',' ')
 plt.title('%s' % sysname )

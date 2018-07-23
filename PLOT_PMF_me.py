@@ -24,16 +24,17 @@ def loaddata ( str ):
 	return
 
 filename = sys.argv[1]
-xlabel = "time ($\mu$s)"
-ylabel = "RMSD (nm)"
+#xlabel = "distance ($\AA$)"
+xlabel = "distance (nm)"
+ylabel = "energy (kJ mol$^{-1}$)"
 f = open('data','w')
 sed = subprocess.call(['sed', '/#/d', filename], stdout=f)
-xdata, ydata = np.loadtxt(fname='data', comments='@', usecols=(0,1), unpack=True)
+xdata, ydata, yerr1 = np.loadtxt(fname='data', comments='@', usecols=(0,1,2), unpack=True)
 
 params = {'legend.fontsize': 'large',
-	'axes.labelsize': 'x-large',
-	'xtick.labelsize': 'x-large',
-	'ytick.labelsize': 'x-large'}
+	'axes.labelsize': 'xx-large',
+	'xtick.labelsize': 'large',
+	'ytick.labelsize': 'large'}
 plt.rcParams.update(params)
 plt.rcParams['axes.linewidth'] = 2
 plt.rcParams['xtick.major.size'] = 5
@@ -42,14 +43,13 @@ plt.rcParams['ytick.major.size'] = 5
 plt.rcParams['ytick.major.width'] = 2
 plt.rcParams['font.sans-serif'] = "cmss10"
 plt.rcParams['axes.unicode_minus']=False
+plt.rcParams.update({'font.size': 15})
 
-plt.ylim([0,0.65])
-plt.plot(xdata, ydata, color='gray', marker='.', markersize=0)
-smooth = sc.signal.savgol_filter(ydata, 11, 1, deriv=0, delta=1, axis=-1, mode='interp', cval=0.0)
-plt.plot(xdata, smooth, 'red', linewidth=0.5)
+#plt.ylim([0,0.65])
+plt.errorbar(xdata, ydata-41.6, color='#ff8000', markersize=0, yerr=yerr1, ecolor='#ffbf80', capthick=0 )
+plt.plot(xdata, ydata-41.6, color='#ff8000') 
 strip1 = filename.rstrip('.xvg')
 sysname = strip1.replace('_',' ')
-plt.title('%s' % sysname )
 plt.xlabel('%s' % xlabel, fontname="cmss10", fontsize=25 )
 plt.ylabel('%s' % ylabel, fontname="cmss10", fontsize=25 )
 plt.savefig('%s.png' % strip1, bbox_inches='tight')

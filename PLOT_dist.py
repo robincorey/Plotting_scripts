@@ -1,17 +1,4 @@
-#!/home/birac/anaconda2/bin/python
-#
-# python script to plot any Gromacsdata file
-# 
-
-### Version control
-
-# original made Aug-2016
-# Updated for \t Sept-210
-# Updated Legends Sept-2016
-# Improved legends Jan-2017. Now added prompt
-# Improved CSV Feb-2017.
-# Prettier graphs May-2017
-# HOLE
+#!/sansom/s137/bioc1535/anaconda2/bin/python
 
 import scipy as sc
 import numpy as np
@@ -56,11 +43,13 @@ plt.rcParams['ytick.major.width'] = 2
 plt.rcParams['font.sans-serif'] = "cmss10"
 plt.rcParams['axes.unicode_minus']=False
 
+#plt.ylim([0,0.65])
 plt.plot(xdata, ydata, color='gray', marker='.', markersize=0)
 smooth = sc.signal.savgol_filter(ydata, 11, 1, deriv=0, delta=1, axis=-1, mode='interp', cval=0.0)
 plt.plot(xdata, smooth, 'red', linewidth=0.5)
 strip1 = filename.rstrip('.xvg')
 sysname = strip1.replace('_',' ')
+plt.title('%s' % sysname )
 plt.xlabel('%s' % xlabel, fontname="cmss10", fontsize=25 )
 plt.ylabel('%s' % ylabel, fontname="cmss10", fontsize=25 )
 plt.savefig('%s.png' % strip1, bbox_inches='tight')
