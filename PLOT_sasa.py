@@ -19,10 +19,6 @@ import subprocess
 import os.path
 from scipy.interpolate import spline
 
-def loaddata ( str ):
-        print "%s" % y
-	return
-
 filename = sys.argv[1]
 xlabel = "time (#)"
 ylabel = "sasa (nm/S2/N)"
