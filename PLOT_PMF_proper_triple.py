@@ -48,7 +48,7 @@ def plot_pmf(num):
 	x_min= xdata[i] 
 	err = int(round(bulk_err_av + min_err))
 	print 'site %s energy well is %s +/- %s' % (num, diff, err)
-	plt.subplot(4,1,num, sharey=True)
+	plt.subplots(4,1,num)
 	plt.plot(xdata-x_min, ydata-bulk, color='red', linewidth=3)
 	plt.fill_between(xdata-x_min, ydata-bulk-yerr1, ydata-bulk+yerr1, alpha=0.3, facecolor='gray')
 	plt.plot(xdata-x_min, ydata-bulk-yerr1, color='gray', linewidth=0.5)

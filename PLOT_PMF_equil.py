@@ -34,7 +34,7 @@ xlabel = "distance (nm)"
 ylabel = "energy (kJ mol$^{-1}$)"
 
 def plotdata (name,num):
-	filename = '%s_pmf.xvg' % (name)
+	filename = 'convergence/%s_pmf.xvg' % (name)
 	x, y, y1 = np.loadtxt(fname=filename, comments=['@','#'], usecols=(0,1,2), skiprows=20, unpack=True)
 	xdata = x[:-12]
 	ydata = y[:-12]
@@ -51,7 +51,7 @@ def plotdata (name,num):
 	bulk_err_av =  np.average(bulk_err)
 	x_min= xdata[i] 
 	err = int(round(bulk_err_av + min_err))
-	print '%s %s %s' % (name, diff, err)
+	print '%s -%s %s' % (name, diff, err)
 	plt.plot(xdata-x_min, ydata-bulk, color=colors[num], linewidth=2, label=name) 
 	#plt.fill_between(xdata-x_min, ydata-bulk-yerr1, ydata-bulk+yerr1, alpha=0.3, facecolor='gray')
 	#plt.plot(xdata-x_min, ydata-bulk-yerr1, color='gray', linewidth=0.5)
@@ -60,8 +60,8 @@ def plotdata (name,num):
 #colors = [ 'blue', 'green', 'red', 'orange', 'darkblue' ]
 #pmfs = ('rf_paper', 'rf_posres', 'pme', 'pme_posres', 'rf_new')
 #pmfs = ('
-colors = cm.rainbow(np.linspace(0, 1, 16 )) 
-for num,pmf in enumerate(np.arange(50000,850000,50000)):
+colors = cm.rainbow(np.linspace(0, 1, 15 )) 
+for num,pmf in enumerate(np.arange(100000,850000,50000)):
 	plotdata(pmf,num)
 	
 #leg = plt.legend(bbox_to_anchor=(1.05, 1), loc=2) 
