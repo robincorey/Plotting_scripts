@@ -48,11 +48,15 @@ def plot_pmf(num):
 	x_min= xdata[i] 
 	err = int(round(bulk_err_av + min_err))
 	print 'site %s energy well is %s +/- %s' % (num, diff, err)
-	plt.subplots(4,1,num)
+	plt.subplot(4,1,num)
 	plt.plot(xdata-x_min, ydata-bulk, color='red', linewidth=3)
 	plt.fill_between(xdata-x_min, ydata-bulk-yerr1, ydata-bulk+yerr1, alpha=0.3, facecolor='gray')
 	plt.plot(xdata-x_min, ydata-bulk-yerr1, color='gray', linewidth=0.5)
 	plt.plot(xdata-x_min, ydata-bulk+yerr1, color='gray', linewidth=0.5)
+	plt.ylim([-10,5])
+	plt.xlim([-0.5, 2.5])
+	plt.yticks(np.arange(-10,1,step=5))
+	plt.xticks(np.arange(-10,10,step=20))
 
 plt.figure(1, figsize=(4,5))
 
@@ -63,8 +67,8 @@ plot_pmf(2)
 filename = sys.argv[3]
 plot_pmf(3)
 
+plt.xticks(np.arange(0,3,step=1))
+
 plt.xlabel("distance (nm)", fontsize=25 )
-plt.ylabel("energy (kJ mol$^{-1}$", fontsize=25 )
-#fig = matplotlib.pyplot.gcf()
-#fig.set_size_inches(4, 5)
+plt.ylabel("energy (kJ mol$^{-1}$)", fontsize=25, position=(0,1.5) )
 plt.savefig('PMF_triple.png', bbox_inches='tight')

@@ -6,15 +6,9 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-from scipy.optimize import curve_fit
-from scipy import optimize
-from scipy import signal
 import os
 import re
 import sys
-import csv
-import shutil
-import subprocess
 import os.path
 
 params = {'legend.fontsize': 'large',
@@ -53,19 +47,11 @@ def plotdata (name,num):
 	err = int(round(bulk_err_av + min_err))
 	print '%s -%s %s' % (name, diff, err)
 	plt.plot(xdata-x_min, ydata-bulk, color=colors[num], linewidth=2, label=name) 
-	#plt.fill_between(xdata-x_min, ydata-bulk-yerr1, ydata-bulk+yerr1, alpha=0.3, facecolor='gray')
-	#plt.plot(xdata-x_min, ydata-bulk-yerr1, color='gray', linewidth=0.5)
-	#plt.plot(xdata-x_min, ydata-bulk+yerr1, color='gray', linewidth=0.5)
 
-#colors = [ 'blue', 'green', 'red', 'orange', 'darkblue' ]
-#pmfs = ('rf_paper', 'rf_posres', 'pme', 'pme_posres', 'rf_new')
-#pmfs = ('
 colors = cm.rainbow(np.linspace(0, 1, 15 )) 
 for num,pmf in enumerate(np.arange(100000,850000,50000)):
 	plotdata(pmf,num)
 	
-#leg = plt.legend(bbox_to_anchor=(1.05, 1), loc=2) 
-#leg.get_frame().set_linewidth(0.0)
 plt.xlabel('%s' % xlabel, fontsize=25 )
 plt.ylabel('%s' % ylabel, fontsize=25 )
 fig = matplotlib.pyplot.gcf()

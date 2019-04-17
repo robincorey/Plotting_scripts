@@ -25,8 +25,6 @@ plt.rcParams.update({'font.size': 15})
 def plot_function ():
 	filename = 'equil_data.txt'
 	x1, y1, yerr = np.loadtxt(fname=filename, comments=['@','#'], usecols=(0,1,2), unpack=True)
-	#plt.scatter(x1/1000, y1, s=40, marker='-o', c='darkorange',edgecolors='darkorange')
-	#plt.plot(x1/1000, y1, color='darkorange', linewidth=2, markersize=12)
 	plt.errorbar((x1/1000)+200, y1, yerr=yerr, marker='o', mfc='white', mec='darkorange', ms=10, mew=2, ecolor='darkorange',elinewidth=1,capsize=2, color='darkorange')
 
 fig = plt.figure()
@@ -34,9 +32,6 @@ ax = fig.add_subplot(111)
 
 plot_function()
 
-#leg = plt.legend(bbox_to_anchor=(1.05, 1), loc=2) # , borderaxespad=0.) #frameon=True)
-#leg.get_frame().set_edgecolor('k')
-#leg.get_frame().set_linewidth(0.0)
 plt.xticks(np.arange(200,1050,step=200))
 plt.xlabel('time (ns)', fontsize=25 ) 
 plt.ylabel('energy (kJ mol$^{-1}$)', fontsize=25 )
