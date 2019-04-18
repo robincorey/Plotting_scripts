@@ -43,7 +43,7 @@ plt.yticks(np.arange(130,146,step=5))
 plt.xticks([2,4],['bound','free'])
 plt.xlim([0.25,4.75])
 plt.ylabel("energy (kJ mol$^{-1}$)", fontsize=25) #, position=(0,1.5) )
-plt.axes().set_aspect(0.4)
+plt.axes().set_aspect(0.35)
 plt.figure(1, figsize=(4,3))
 plt.savefig('FEP_triple.png', bbox_inches='tight')
 
