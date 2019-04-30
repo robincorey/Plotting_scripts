@@ -25,6 +25,7 @@ plt.rcParams.update({'font.size': 15})
 
 
 ylabel = "bound lipid count"
+ylims = [0]
 xposition = [] 
 pdb = sys.argv[1]
 lipids = [ 'POPE' , 'POPG', 'CARD' ]
@@ -48,8 +49,10 @@ def plot_function (pdb, lipid, counter):
 			up = ydata
 		std = np.std(ydata)
 	        yav = np.mean(ydata)
+		ymax = np.max(ydata)
 		yav_int = round(yav, 1)
 		std_int = round(std, 1)
+		ylims.append(ymax)
 		#ax.bar(x, yav, width=0.3, facecolor='none', align='center', edgecolor=colors[counter], linewidth=3,yerr=std, capsize=4, ecolor=colors[counter], alpha=0.1, joinstyle='round')
 		bp = ax.boxplot(ydata, positions=[counter+shift_value])
 		plt.setp(bp['boxes'], color=colors[counter])
@@ -63,14 +66,19 @@ def plot_function (pdb, lipid, counter):
 	t2, p2 = stats.ttest_ind(up,low)
 	#print t2
 	print 'p = %s' % p2
+	if p2 < 100:
+		sig = 'ns'
 	if p2 < 0.05:
 		sig = '*'
 	if p2 < 0.01:
 		sig = '**'
 	if p2 < 0.001:
 		sig = '***'
-	alldata = up+low
-	plt.text(counter+shift_value-0.175,np.max(alldata/2)+5,sig, horizontalalignment='center')
+	alldata = np.concatenate((up, low))
+	print alldata
+	print up
+	print low
+	plt.text(counter+shift_value-0.175,np.max(alldata)+1,sig, horizontalalignment='center')
 	f2 = open('pvalues.txt', 'a')
 	f2.write('%s %s = %s\n' % (pdb, lipid, p2))
 
@@ -81,7 +89,9 @@ colors = [ 'red', 'blue', 'green' ]
 for counter, lipid in enumerate(lipids):
 	plot_function(pdb, lipid, counter)
 
-plt.yticks(np.arange(0, 36, step=5 ))
+#print np.max(ylims)
+plt.ylim(0,np.max(ylims)+4)
+plt.yticks(np.arange(0, np.max(ylims)+5, step=5 ))
 #plt.xticks(np.arange(-0.5, 2.5, step=0.5), ('inner', 'outer', 'inner', 'outer', 'inner', 'outer'), rotation=45)
 plt.xticks(xposition, ('inner', 'outer', 'inner', 'outer', 'inner', 'outer'), rotation=45)
 plt.ylabel('%s' % ylabel, fontname="cmss10", fontsize=25 )
