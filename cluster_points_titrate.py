@@ -1,9 +1,6 @@
 import numpy as np
 import sys
 from sklearn.cluster import DBSCAN
-#from sklearn import metrics
-#from sklearn.datasets.samples_generator import make_blobs
-#from sklearn.preprocessing import StandardScaler
 
 import matplotlib
 matplotlib.use('Agg') 
@@ -21,16 +18,6 @@ def cluster_coords(x,y,z, eps, min_samples):
 	print 'eps is %s' % eps
 	print 'Estimated number of clusters: %d' % n_clusters_
 	print 'Estimated number of noise points: %d' % n_noise_
-	#print "Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels)
-	#print "Completeness: %0.3f" % metrics.completeness_score(labels_true, labels)
-	#print "V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels)
-	#print "Adjusted Rand Index: %0.3f"
-	#      % metrics.adjusted_rand_score(labels_true, labels)
-	#print "Adjusted Mutual Information: %0.3f"
-	#      % metrics.adjusted_mutual_info_score(labels_true, labels,
-        #                                   average_method='arithmetic')
-	#print("Silhouette Coefficient: %0.3f"
-      #% metrics.silhouette_score(X, labels))
 	plotCluster(coords, labels, core_samples_mask, n_clusters_)
 	return labels
 
