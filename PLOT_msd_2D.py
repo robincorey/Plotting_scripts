@@ -1,3 +1,4 @@
+# USEFUL = laoding data into one long arry
 import scipy as sc
 import numpy as np
 import matplotlib
