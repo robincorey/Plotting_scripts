@@ -1,3 +1,4 @@
+# USEFUL = loading different data into a 2D array
 import scipy as sc
 import numpy as np
 import matplotlib
