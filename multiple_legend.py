@@ -1,4 +1,4 @@
-#!/sansom/s137/bioc1535/anaconda2/bin/python
+# USEFUL = manual multiple legend making
 
 import matplotlib.patches as mpatches
 import matplotlib
