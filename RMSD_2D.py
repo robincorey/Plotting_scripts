@@ -1,3 +1,4 @@
+# USEFUL = matrices
 import sys 
 import MDAnalysis as mda
 import numpy as np
