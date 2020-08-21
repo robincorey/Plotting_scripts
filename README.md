@@ -35,3 +35,13 @@ glob stuff
 ```
 analyse_rmsf.py
 ```
+
+MDanalysis density
+```
+site_occupancy.py 
+```
+
+summing columns of a file
+```
+column_stats.py 
+```
