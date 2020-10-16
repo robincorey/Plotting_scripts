@@ -45,3 +45,8 @@ summing columns of a file
 ```
 column_stats.py 
 ```
+
+combining csv contact files into one array in bash
+```
+get_average_from_csv.sh
+```
