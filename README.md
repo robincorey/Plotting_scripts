@@ -50,3 +50,8 @@ combining csv contact files into one array in bash
 ```
 get_average_from_csv.sh
 ```
+
+nice 2D array plot
+```
+PLOT_dens_2D.py
+```
