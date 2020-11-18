@@ -55,3 +55,8 @@ nice 2D array plot
 ```
 PLOT_dens_2D.py
 ```
+
+contact map
+```
+PLOT_contact.py
+```
