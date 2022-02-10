@@ -60,3 +60,8 @@ contact map
 ```
 PLOT_contact.py
 ```
+
+getting averages with grep
+```
+get_res.py
+```
