@@ -65,3 +65,8 @@ getting averages with grep
 ```
 get_res.py
 ```
+
+get and average data as 1D arrays, put into a 2D array and average
+```
+PLOT_PMF_average.py
+```
