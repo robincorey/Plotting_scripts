@@ -70,3 +70,8 @@ get and average data as 1D arrays, put into a 2D array and average
 ```
 PLOT_PMF_average.py
 ```
+
+>>>> count number of columns, and plot each one as a separate line according to a cmap
+```
+PLOT_flip_count_col.py
+```
