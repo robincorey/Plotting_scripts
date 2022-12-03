@@ -80,3 +80,8 @@ cylinder analysis in MDAnalysis - some nice MD syntax
 ```
 cylinder_CLA.py
 ```
+
+awk script for summing columns - allows printf
+```
+combine_to_av.sh
+```
