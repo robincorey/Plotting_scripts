@@ -81,7 +81,7 @@ cylinder analysis in MDAnalysis - some nice MD syntax
 cylinder_CLA.py
 ```
 
-awk script for summing columns - allows printf
+awk script for summing columns
 ```
-combine_to_av.sh
+combine_to_av2.sh
 ```
