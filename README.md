@@ -8,7 +8,7 @@ Require installation of NumPy, Matplotlib, SciPy and Pandas.
 Scipts of note
 ====
 
-### Handling multiple datasets
+## Handling multiple datasets
 
 for plotting manual legend entries:
 ```
@@ -40,8 +40,13 @@ count number of columns, and plot each one as a separate line according to a cma
 PLOT_flip_count_col.py
 ```
 
+use pandas to load a data of unknown size, a big improvement over numpy
+```
+PLOT_pd_standard.py
+```
 
-### Densities and 2D plots
+
+## Densities and 2D plots
 
 some cool matrix stuff
 ```
@@ -63,7 +68,8 @@ Using MDanalysis to read multiple files and write a density file (as per https:/
 site_occupancy.py
 ```
 
-### Specific code of use
+
+## Specific code of use
 
 example of glob being used for finding all files in dir by extenion
 ```
@@ -85,7 +91,8 @@ getting averages with grep
 get_res.py
 ```
 
-### Specific plotting files of note
+
+## Specific plotting files of note
 
 plot residue contact maps (as per https://doi.org/10.7554/eLife.80988)
 ```
