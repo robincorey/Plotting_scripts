@@ -3,12 +3,14 @@
 
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import sys
 
 # pandas only allows one comment, so # need to be removed manually
-df = pd.read_csv(sys.argv[1], sep="\t", on_bad_lines='skip', comment='@', header=None)
+df = pd.read_csv(sys.argv[1], sep="\t", comment='@', header=None)
 
 # define cmap
 cmap = cm.get_cmap('rainbow_r', len(df. columns))
