@@ -105,4 +105,7 @@ Some nice MDAanalysis syntax used
 cylinder_CLA.py
 ```
 
-
+density plotting script - add arg for number of repeats. Currently POPE/POPG/CARD
+```
+full_make_density_plots.sh 3
+```
