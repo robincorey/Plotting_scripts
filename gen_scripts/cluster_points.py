@@ -1,14 +1,14 @@
 import numpy as np
 import sys
 from sklearn.cluster import DBSCAN
-#from sklearn import metrics
-#from sklearn.datasets.samples_generator import make_blobs
-#from sklearn.preprocessing import StandardScaler
+from sklearn import metrics
+from sklearn.datasets.samples_generator import make_blobs
+from sklearn.preprocessing import StandardScaler
 
 import matplotlib
 matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
-#from mpl_toolkits.mplot3d import axes3d, Axes3D
+from mpl_toolkits.mplot3d import axes3d, Axes3D
 
 def cluster_coords(x,y,z, eps, min_samples, res, resid):
 	coords = np.vstack((x,y,z)).T
@@ -65,15 +65,6 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 
 filename=sys.argv[1]
-#coords = np.genfromtxt(fname=filename, usecols=(5,6,7), unpack=True, skip_header=2, skip_footer=2)
 x, y, z, s, res  = np.genfromtxt(fname=filename, usecols=(5, 6, 5, 8, 4), unpack=True, skip_header=2, skip_footer=2)
 resid = np.genfromtxt(fname=filename, usecols=(3), unpack=True, skip_header=2, skip_footer=2, dtype=None)
-#y = np.genfromtxt(fname=filename, usecols=(6), unpack=True, skip_header=2, skip_footer=2)
-#z = np.genfromtxt(fname=filename, usecols=(7), unpack=True, skip_header=2, skip_footer=2)
-#s = np.genfromtxt(fname=filename, usecols=(9), unpack=True, skip_header=2, skip_footer=2)
-#plot_coords(x,y,z,s)
 cluster_coords(x,y,z, 10, 3, res, resid)
-#plot_cluster(x,y,z,s)
-#labels = db.labels_
-#from collections import Counter
-#Counter(labels)
