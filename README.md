@@ -109,3 +109,8 @@ density plotting script - add arg for number of repeats. Currently POPE/POPG/CAR
 ```
 full_make_density_plots.sh 3
 ```
+
+converting from xy data (e.g. PCA 2D proj) to a 2D hist, including printing data for use in e.g. Prism
+```
+convert_xy_to_2D_hist.ipynb
+```
